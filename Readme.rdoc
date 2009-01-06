@@ -16,5 +16,5 @@ CurrencySource - Fetches exchange rates from currencysource.com
   require 'kieranj-currency_source'
   
   c = CurrenySource::Currency.new("GBP")
-  c.exchange_rate("USD") # => 1.45
+  c.exchange_rate("USD") # => "1.45"
   
