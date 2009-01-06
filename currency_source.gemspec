@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.summary = 'Fetches exchange rates from Currency Source'
   s.email    = "kieran[AT]invisiblelines.com"
   s.homepage = "http://github.com/kieranj/currency_source"
-  # s.rubyforge_project = "currency_source"
+  s.rubyforge_project = "currency_source"
   s.description = "Ruby library for fetching exchange rates from currency source"
   s.has_rdoc = true
   s.authors = [ 'Kieran Johnson' ]
