@@ -1,0 +1,16 @@
+= Read Me
+
+CurrencySource - Fetches exchange rate from currencysource.com
+
+  by Kieran Johnson
+  http://github.com/kieranj/currency_source
+
+== Installation:
+
+  $ gem sources -a http://gems.github.com/ (you only need to do this once)
+  $ gem install kieranj-currency_source
+
+== Usage:
+
+  require 'rubygems'
+  require 'kieranj-currency_source'
