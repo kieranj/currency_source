@@ -1,74 +1,25 @@
-require "rubygems"
-require "hpricot"
-require "open-uri"
-
 module CurrencySource
   
+  Version = "0.0.1"
+  
   class InvalidCurrency < StandardError; end
+  class MissingExchangeRate < StandardError; end
   
   class Currency
-    
-    ValidCurrencies = [
-      'ARS',
-      'AUD',
-      'BHD',
-      'BWP',
-      'BRL',
-      'BND',
-      'CAD',
-      'CLP',
-      'CNY',
-      'COP',
-      'CZK',
-      'DKK',
-      'EUR',
-      'HUF',
-      'ISK',
-      'INR',
-      'IDR',
-      'IRR',
-      'ILS',
-      'JPY',
-      'KRW',
-      'KWD',
-      'LYD',
-      'MYR',
-      'MUR',
-      'MXN',
-      'NPR',
-      'NZD',
-      'NOK',
-      'OMR',
-      'PKR',
-      'PLN',
-      'GBP',
-      'QAR',
-      'SAR',
-      'SGD',
-      'SIT',
-      'ZAR',
-      'LKR',
-      'SEK',
-      'CHF',
-      'THB',
-      'TTD',
-      'AED',
-      'USD',
-      'VEB'
-    ]
 
     BaseURL = "http://www.currencysource.com/rss/"
     
     attr_reader :currency
     
     def initialize(currency)
-      raise InvalidCurrency unless ValidCurrencies.include?(currency)
-      @currency       = currency
+      raise InvalidCurrency unless Currencies::ValidCurrencies.include?(currency)
+      @currency = currency
     end
     
     def exchange_rate(other_currency)
-      raise InvalidCurrency unless ValidCurrencies.include?(currency)
-      exchange_rates[other_currency] rescue ""
+      raise InvalidCurrency unless Currencies::ValidCurrencies.include?(currency)
+      raise MissingExchangeRate unless exchange_rates.keys.include?(other_currency)
+      exchange_rates[other_currency] 
     end
     
     def exchange_rates
